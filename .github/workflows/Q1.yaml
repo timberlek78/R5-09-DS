@@ -27,6 +27,6 @@ jobs:
       # Étape 4 : Commit et push du fichier généré
       - name: Commit et push
         run: |
-          git add rapport.txt
+          git add Q1_archive_README.md
           git commit -m "Ajout du rapport.txt basé sur README.md"
           git push
