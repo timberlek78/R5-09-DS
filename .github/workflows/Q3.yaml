@@ -17,14 +17,11 @@ jobs:
         run: |
           echo "Boudeele Thomas" > Q3_archive_java.txt
           cat Q3.java >> Q3_archive_java.txt
-
-      - name: Configuration de Git
+          
+      - name: Commit et push
         run: |
           git config --global user.name timberlek78
           git config --global user.email thomasboudeele1@gmail.com
-
-      - name: Commit et push
-        run: |
           git add Q3_archive_java.txt
           git commit -m "Ajout de Q3_archive_java.txt"
           git push
