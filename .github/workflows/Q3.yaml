@@ -16,7 +16,6 @@ jobs:
       - name: Création du fichier Q3_archive_java.txt
         run: |
           echo "Boudeele Thomas" > Q3_archive_java.txt
-          echo "" >> Q3_archive_java.txt
           cat Q3.java >> Q3_archive_java.txt
 
       - name: Configuration de Git
