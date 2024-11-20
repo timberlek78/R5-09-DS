@@ -17,9 +17,9 @@ jobs:
       # Étape 2 : Création d'une copie du fichier README.md sous le nom rapport.txt
       - name: Création du fichier ReadMe_archive.md
         run: | 
-          echo 'Thomas Boudeele' >> Q2_archive_README.md
-          echo date              >> Q2_archive_README.md
-          cp README.md Q2_archive_README.md
+          echo 'Thomas Boudeele' > Q2_archive_README.md
+          echo date              > Q2_archive_README.md
+          cp README.md > Q2_archive_README.md
           
 
       # Étape 3 : Configuration Git pour effectuer le commit
