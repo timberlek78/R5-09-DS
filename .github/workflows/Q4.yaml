@@ -30,7 +30,7 @@ jobs:
           
           # Ajouter le contenu du fichier Q4.java s'il existe
           if [ -f Q4.java ]; then
-            cat Q4.java >> $ARCHIVE_FILE
+            cat java/Q4.java >> $ARCHIVE_FILE
           else
             echo "Le fichier Q4.java est introuvable." >> $ARCHIVE_FILE
           fi
