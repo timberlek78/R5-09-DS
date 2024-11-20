@@ -1,1 +1,37 @@
+# Déclenchement du workflow sur les événements 'push'
+on: [push]
+
+# Définition des permissions nécessaires
+permissions:
+  contents: write
+
+jobs:
+  create-and-push-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Vérification du code source (action standard pour récupérer le dépôt)
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Étape 2 : Création d'une copie du fichier README.md sous le nom rapport.txt
+      - name: Création du fichier ReadMe_archive.md
+        run: | 
+          "Thomas Boudeele" >> Q2_archive_README.md
+          date              >> Q2_archive_README.md
+          cp README.md Q2_archive_README.md
+          
+
+      # Étape 3 : Configuration Git pour effectuer le commit
+      - name: Configuration de Git
+        run: |
+          git config --global user.name "timberlek78"
+          git config --global user.email "thomasboudeele1@gmail.com"
+
+      # Étape 4 : Commit et push du fichier généré
+      - name: Commit et push
+        run: |
+          git add rapport.txt
+          git commit -m "Ajout du rapport.txt basé sur README.md"
+          git push
 
