@@ -19,7 +19,7 @@ jobs:
         run: | 
           echo 'Thomas Boudeele' > Q2_archive_README.md
           echo date              > Q2_archive_README.md
-          cp README.md > Q2_archive_README.md
+          README.md > Q2_archive_README.md
           
 
       # Étape 3 : Configuration Git pour effectuer le commit
