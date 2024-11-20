@@ -1,34 +1,31 @@
-# Déclenchement du workflow sur les événements 'push'
+name: Créer Q3_archive_java.txt
+
 on: [push]
 
-# Définition des permissions nécessaires
 permissions:
   contents: write
 
 jobs:
-  create-and-push-readme:
+  create-and-push-archive:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1 : Vérification du code source (action standard pour récupérer le dépôt)
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # Étape 2 : Création d'une copie du fichier README.md avec les informations demandées
       - name: Création du fichier Q3_archive_java.txt
         run: |
-          echo 'Thomas Boudeele' > Q3_archive_java.txt             # Ajout du nom et prénom                         # Ajout de la date et l'heure
-          cat Q3.java >> Q3_archive_java.txt                     # Ajout du contenu de README.md
+          echo "Boudeele Thomas" > Q3_archive_java.txt
+          echo "" >> Q3_archive_java.txt
+          cat Q3.java >> Q3_archive_java.txt
 
-      # Étape 3 : Configuration Git pour effectuer le commit
       - name: Configuration de Git
         run: |
-          git config --global user.name "timberlek78"
-          git config --global user.email "thomasboudeele1@gmail.com"
+          git config --global user.name timberlek78
+          git config --global user.email thomasboudeele1@gmail.com
 
-      # Étape 4 : Commit et push du fichier généré
       - name: Commit et push
         run: |
           git add Q3_archive_java.txt
-          git commit -m "Ajout du fichier Q3_archive_java.txt avec les informations demandées"
+          git commit -m "Ajout de Q3_archive_java.txt"
           git push
