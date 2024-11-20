@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v3
 
       # Étape 2 : Création du fichier Q4_archive_<date>.txt
-      - name: Création du fichier Q4_archive_<date>.txt
+      - name: Création du fichier Q5_archive_<date>.txt
         run: |
           # Obtenir la date au format JJ-MM-AAAA
           DATE=$(date +'%d-%m-%Y')
