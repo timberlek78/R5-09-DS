@@ -1,0 +1,49 @@
+# Déclenchement du workflow sur les événements 'push'
+on: [push]
+
+# Définition des permissions nécessaires
+permissions:
+  contents: write
+
+jobs:
+  create-and-push-q4:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape 1 : Vérification du code source (action standard pour récupérer le dépôt)
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Étape 2 : Création du fichier Q4_archive_<date>.txt
+      - name: Création du fichier Q4_archive_<date>.txt
+        run: |
+          # Obtenir la date au format JJ-MM-AAAA
+          DATE=$(date +'%d-%m-%Y')
+
+          # Définir le nom du fichier avec la date
+          ARCHIVE_FILE="Q4_archive_${DATE}.txt"
+
+          # Écrire les informations demandées dans le fichier
+          echo "Thomas Boudeele" > $ARCHIVE_FILE                # Nom et prénom
+          echo "" >> $ARCHIVE_FILE                              # Ligne vide pour la lisibilité
+          echo "Contenu du fichier Q4.java :" >> $ARCHIVE_FILE # En-tête
+          
+          # Ajouter le contenu du fichier Q4.java s'il existe
+          if [ -f Q4.java ]; then
+            cat Q4.java >> $ARCHIVE_FILE
+          else
+            echo "Le fichier Q4.java est introuvable." >> $ARCHIVE_FILE
+          fi
+
+      # Étape 3 : Configuration Git pour effectuer le commit
+      - name: Configuration de Git
+        run: |
+          git config --global user.name "timberlek78"
+          git config --global user.email "thomasboudeele1@gmail.com"
+
+      # Étape 4 : Commit et push du fichier généré
+      - name: Commit et push
+        run: |
+          git add Q4_archive_*.txt
+          git commit -m "Ajout du fichier Q4_archive_<date>.txt avec les informations demandées"
+          git push
