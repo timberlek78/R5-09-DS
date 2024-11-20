@@ -1,1 +1,6 @@
-Aucune différence détectée (première version).
+14d13
+<             System.out.println(); // Passage à la ligne suivante
+20c19
+<  14  77 534 java/Q6.java
+---
+>  13  70 468 java/Q6.java
