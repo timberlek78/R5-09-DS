@@ -8,7 +8,6 @@ public class Q6 {
             for (int j = 1; j <= i; j++) { // La boucle interne contrôle le nombre d'étoiles
                 System.out.print("x");
             }
-            System.out.println(); // Passage à la ligne suivante
         }
     }
 }
